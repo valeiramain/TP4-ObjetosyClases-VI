@@ -5,30 +5,30 @@
 const estudiante = {
     nombre:'',
     nota:0.00,
+
 }
 
 let arrayEstudiantes =[];
 
-function notaMedia(){
+function notaMedia(arrayEst){
     let resultado = 0;
-    for(let i = 0; i<arrayEstudiantes.length;i++){
-        resultado = resultado + arrayEstudiantes[i.nota]
+    for(let i = 0; i<arrayEst.length;i++){
+        resultado = resultado + arrayEst[i.nota]
     }
-    resultado = resultado / (arrayEstudiantes.length-1)
+    resultado = resultado / (arrayEst.length)
     return resultado
 }
 
 do{
     let nombreEstudiante = prompt('Ingrese Nombre del Estudiante:')
     let notaEstudiante = parseFloat(prompt('Ingrese Nota del Estudiante:'))
-    estudiante.nombre = nombreEstudiante;
-    estudiante.nota = notaEstudiante;
+
     console.log('Nombre: '+nombreEstudiante)
     console.log('Nota: '+notaEstudiante)
-    // estudiante.push(estudiante(nombre, nota));
+    // estudiante.push(new estudiante(nombreEstudiante, notaEstudiante));
 }while (confirm('Desea seguir ingresando estudiantes?'))
 
 
 console.log(arrayEstudiantes)
-const media = notaMedia()
+const media = notaMedia(arrayEstudiantes)
 document.writeln(`La nota media es ${media}`)
