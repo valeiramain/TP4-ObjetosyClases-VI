@@ -3,11 +3,7 @@
 // Usa un bucle para calcular la calificación más alta del alumno 
 // y un switch para clasificar al alumno según su calificación más alta (A para 9-10, B para 7-8, C para 5-6, D para 0-4).
 
-const alumno = {
-    nombre:'',
-    curso:'',
-    calificacion:[],
-}
+arrayNotas = [];
 
 function agregaCalificacion(alumno,nota){
     console.log('dentro funcion')
@@ -17,17 +13,17 @@ function agregaCalificacion(alumno,nota){
 
 
 do{
-    let nombreAlumno = prompt('Ingrese nombre del Alumno:')
-    let cursoAlumno = prompt('Ingrese curso del Alumno:')
-    let notaAlumno = parseFloat(prompt('ingrese calificacion del Alumno:'));
-    alumno.nombre=nombreAlumno;
+    const nombreAlumno = prompt('Ingrese nombre del Alumno:')
+    const cursoAlumno = prompt('Ingrese curso del Alumno:')
+    const notaAlumno = parseFloat(prompt('ingrese calificacion del Alumno:'));
+    
+    const alumno = {
+        nombre:nombreAlumno,
+        curso:cursoAlumno,
+        calificacion:arrayNotas.push(notaAlumno),
+    }
+    
     console.log(alumno)
-    alumno.curso=cursoAlumno;
-    console.log(alumno)
-    console.log('nombre:'+nombreAlumno)
-    console.log('nota:'+notaAlumno)
-    agregaCalificacion(nombreAlumno,notaAlumno)
-
-    console.log(alumno)
+    console.log(arrayNotas)
 
 }while (confirm('Desea seguir ingresando estudiantes?'))
