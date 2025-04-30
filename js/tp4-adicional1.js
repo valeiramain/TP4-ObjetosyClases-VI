@@ -8,6 +8,7 @@ const persona = {
     edad: 0,
     hobbies: [],
 
+    // cambiar a FUNCION. NO METODO
     mostrarHobbies: function () {
         document.writeln(`<p>Los hobbies de la persona son:</p>
             <ul>`)

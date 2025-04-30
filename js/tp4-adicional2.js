@@ -5,10 +5,9 @@
 const estudiante = {
     nombre:'',
     nota:0.00,
-
 }
 
-let arrayEstudiantes =[];
+let arrayEstudiantes =[{}];
 
 function notaMedia(arrayEst){
     let resultado = 0;
@@ -25,10 +24,16 @@ do{
 
     console.log('Nombre: '+nombreEstudiante)
     console.log('Nota: '+notaEstudiante)
+    estudiante.nombre = nombreEstudiante
+    estudiante.nota = notaEstudiante
+    console.log(estudiante)
+    console.log('array')
+    //como hago para que cargue en el array solo el ultimo alumno ingresado?
+    arrayEstudiantes.push(estudiante)
     // estudiante.push(new estudiante(nombreEstudiante, notaEstudiante));
 }while (confirm('Desea seguir ingresando estudiantes?'))
 
-
+console.log(estudiante)
 console.log(arrayEstudiantes)
 const media = notaMedia(arrayEstudiantes)
 document.writeln(`La nota media es ${media}`)
