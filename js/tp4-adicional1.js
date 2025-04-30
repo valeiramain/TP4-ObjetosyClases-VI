@@ -7,16 +7,15 @@ const persona = {
     nombre: '',
     edad: 0,
     hobbies: [],
+}
 
-    // cambiar a FUNCION. NO METODO
-    mostrarHobbies: function () {
-        document.writeln(`<p>Los hobbies de la persona son:</p>
-            <ul>`)
-        for (let i = 0; i < this.hobbies.length; i++) {
-            document.writeln(`<li>${this.hobbies[i]}</li>`)
-        }
-        document.writeln(`</ul>`)
+function mostrarHobbies(persona) {
+    document.writeln(`<p>Los hobbies de la persona son:</p>
+        <ul>`)
+    for (let i = 0; i < persona.hobbies.length; i++) {
+        document.writeln(`<li>${persona.hobbies[i]}</li>`)
     }
+    document.writeln(`</ul>`)
 }
 
 const nombreP = prompt('Ingrese Nombre: ')
@@ -39,13 +38,10 @@ if (hobbieP !== null) {
     persona.hobbies.push(hobbieP)
 }
 
-console.log(persona)
-
 hobbieP = prompt('Ingrese un nuevo Hobbie: ')
-console.log('nuevo hobbie: ' + hobbieP)
+
 if (hobbieP !== null) {
     persona.hobbies.push(hobbieP)
 }
 
-console.log(persona)
-persona.mostrarHobbies()
+mostrarHobbies(persona)
