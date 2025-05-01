@@ -18,7 +18,7 @@ class Persona {
     #peso;
     #altura;
     #anioNac;
-    constructor(nombrep,edadp,dnip,sexop,pesop,alturap,anioNacp) {
+    constructor(nombrep, edadp, dnip, sexop, pesop, alturap, anioNacp) {
         this.#nombre = nombrep;
         this.#edad = edadp;
         this.#dni = dnip;
@@ -77,23 +77,46 @@ class Persona {
 
     //metodos
 
+    mostrarGeneracion(anioNac) {
+        switch (anioNac) {
+            case (anioNac >= 1994 && anioNac <= 2010):
+                break;
+
+            case (anioNac >= 1981 && anioNac <= 1993):
+                break;
+
+            case (anioNac >= 1969 && anioNac <= 1980):
+                break;
+
+            case (anioNac >= 1949 && anioNac <= 1968):
+                break;
+
+            case (anioNac >= 1930 && anioNac <= 1948):
+                break;
+
+                Default:
+                document.writeln(`operación invalida`)
+                break;
+        }
+    }
+
     imprimeDatos() {
         document.writeln(`<h3>Datos del Persona:</h3>
             <ul>
-            <li>Código Persona: ${this.##nombre}</li>
-            <li>Nombre Persona: ${this.##nombre}</li>
-            <li>Precio Persona: $${this.#precioPersona}</li>
+            <li>Código Persona: ${this.#nombre}</li>
+            <li>Nombre Persona: ${this.#edad}</li>
+            <li>Precio Persona: $${this.#dni}</li>
             </ul>`)
     }
 
 }
 
 
-const Persona1 = new Persona('P001','Zapatillas Nike Air',150000);
+const Persona1 = new Persona('P001', 'Zapatillas Nike Air', 150000);
 arrayPersonas.push(Persona1)
-const Persona2 = new Persona('P002','Remera Adidas',45000);
+const Persona2 = new Persona('P002', 'Remera Adidas', 45000);
 arrayPersonas.push(Persona2)
-const Persona3 = new Persona('P003','Campera Puma',135000);
+const Persona3 = new Persona('P003', 'Campera Puma', 135000);
 arrayPersonas.push(Persona3)
 
 console.log(arrayPersonas)
