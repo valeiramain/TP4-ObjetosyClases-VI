@@ -95,33 +95,51 @@ class Persona {
             generacion = 'Baby Boom'
         } else if (anioNac >= 1930 && anioNac <= 1948) {
             rasgoCaracteristico = 'Austeridad';
-            generacion = 'Silent Generation (los niños de la posguerra'
+            generacion = 'Silent Generation (los niños de la posguerra)'
         } else {
             document.writeln("Ingresaste una opción inválida")
         }
 
-        console.log('rasgo: ' + rasgoCaracteristico)
-        console.log('generacion: ' + generacion);
+        return document.writeln(`<p>Los nacidos en ${anioNac} tienen como rasgo característico: "${rasgoCaracteristico}" y pertenecen a la Generación: "${generacion}"</p>`)
     }
 
+    esMayorDeEdad(edad){
+        if (edad>=18){
+            return document.writeln(`<p>La persona es mayor de Edad</p>`)
+        }else{
+            return document.writeln(`<p>La persona es menor de Edad</p>`)
 
+        }
+    }
 
-    imprimeDatos() {
-        document.writeln(`<h3>Datos del Persona:</h3>
+    mostrarDatos(){
+        document.writeln(`<h3>Datos de la Persona:</h3>
             <ul>
-            <li>Código Persona: ${this.#nombre}</li>
-            <li>Nombre Persona: ${this.#edad}</li>
-            <li>Precio Persona: $${this.#dni}</li>
+            <li>Nombre: ${this.#nombre}</li>
+            <li>Edad: ${this.#edad}</li>
+            <li>DNI: ${this.#dni}</li>
+            <li>Sexo: ${this.#sexo}</li>
+            <li>Peso: ${this.#peso}</li>
+            <li>Altura: ${this.#altura}</li>
+            <li>Año de Nacimiento: ${this.#anioNac}</li>
             </ul>`)
     }
+
+    generaDNI(){
+        const dniAleatorio = Math.floor(Math.random() * 100000000);
+        return document.writeln(`<p>El DNI generado aleatoriamente es: ${dniAleatorio}`)
+    }
+
 
 }
 
 // nuevo objeto
 const persona = new Persona('Valentina Iramain', 53, '22414369', 'F', '55 kg', 1.60, 1972);
 console.log(persona)
-console.log('antes funcion añoo nac ' + persona.getAnioNac)
+
 persona.mostrarGeneracion(persona.getAnioNac)
-console.log('fin programa')
+persona.esMayorDeEdad(persona.getEdad)
+persona.mostrarDatos()
+persona.generaDNI()
 
 
