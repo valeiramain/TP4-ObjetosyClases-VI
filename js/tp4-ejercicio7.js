@@ -44,67 +44,66 @@ class Contacto {
         this.#telefono = nuevoTelefono
     }
 
-    // agregarContacto(arrayAgenda) {
-    //     const cantContactos = parseInt(prompt('Ingrese cantidad de contactos a Ingresar en la Agenda: '))
-    // if (!isNaN(cantContactos) && (cantContactos <= 10)) {
-    //     for (let i = 0; i < cantContactos; i++) {
-    //         const nuevoNombre = prompt('Ingrese Nombre:')
-    //         const nuevoTelefono = prompt('Ingrese Telefono:')
-    //         const nuevoContacto = new Contacto(nuevoNombre, nuevoTelefono)
-    //         console.log(nuevoContacto)
-    //         arrayAgenda.push(nuevoContacto)
-    //         console.log(arrayAgenda)
-    //     }
-    // }
-    // } else {
-    //     document.writeln(`<p>Operación Inválida</p>`)
-    // }
-
 }
 
-
-
-
-const operacion = parseInt(prompt('Ingrese 1=>Agregar 2=>Existe 3=>Listar 4=>Buscar 5=>Eliminar 6=>Agenda Llena 7=>Huecos Libres: '))
-
-
-if (!isNaN(operacion) && (operacion >= 1 || operacion <= 7)) {
-    switch (operacion) {
-        case 1:
-            //Agregar
-            console.log('Agregar')
-            break;
-        case 2:
-            //Existe?
-            console.log('Existe?')
-            break;
-        case 3:
-            //Listar
-            console.log('Listar')
-            break;
-        case 4:
-            //Buscar
-            console.log('Buscar')
-            break;
-        case 5:
-            //Eliminar
-            console.log('eliminar')
-            break;
-        case 6:
-            //Agenda llena?
-            console.log('llena?')
-            break;
-        case 7:
-            //huecos libres?
-            console.log('huecos?')
-            break;
-        default:
-            document.writeln("Ingresaste una opción inválida")
+function agregarContacto() {
+    const cantContactos = parseInt(prompt('Ingrese cantidad de contactos a Ingresar en la Agenda: '))
+    if (!isNaN(cantContactos)) {
+        for (let i = 0; (i < cantContactos); i++) {
+            const nuevoNombre = prompt('Ingrese Nombre:')
+            const nuevoTelefono = prompt('Ingrese Telefono:')
+            const nuevoContacto = new Contacto(nuevoNombre, nuevoTelefono)
+            console.log(nuevoContacto)
+            arrayAgenda.push(nuevoContacto)
+            console.log(arrayAgenda)
+        }
+    } else {
+        return document.writeln(`<p>Operación Inválida</p>`)
     }
-} else {
-    document.writeln(`<p>Operación Inválida</p>`)
 }
 
+
+do {
+    const operacion = parseInt(prompt('INGRESE 1=>Agregar 2=>Existe 3=>Listar 4=>Buscar 5=>Eliminar 6=>Agenda Llena 7=>Huecos Libres: '))
+
+    if (!isNaN(operacion) && (operacion >= 1 && operacion <= 7)) {
+        switch (operacion) {
+            case 1:
+                //Agregar
+                console.log('Agregar')
+                agregarContacto()
+                break;
+            case 2:
+                //Existe?
+                console.log('Existe?')
+                break;
+            case 3:
+                //Listar
+                console.log('Listar')
+                break;
+            case 4:
+                //Buscar
+                console.log('Buscar')
+                break;
+            case 5:
+                //Eliminar
+                console.log('eliminar')
+                break;
+            case 6:
+                //Agenda llena?
+                console.log('llena?')
+                break;
+            case 7:
+                //huecos libres?
+                console.log('huecos?')
+                break;
+            default:
+                document.writeln("Ingresaste una opción inválida")
+        }
+    } else {
+        document.writeln(`<p>Operación Inválida</p>`)
+    }
+} while (confirm('Desea realizar operaciones en la Agenda?'))
 
 
 console.log('fin programa')
