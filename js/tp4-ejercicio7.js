@@ -44,22 +44,24 @@ class Contacto {
         this.#telefono = nuevoTelefono
     }
 
+
+    listarDatos() {
+        document.writeln(`
+        <ul>
+            <li>Nombre: ${this.#nombre}  Telefono: ${this.#telefono}</li>
+        </ul>`)
+    }
+
+
 }
 
 function agregarContacto() {
-    const cantContactos = parseInt(prompt('Ingrese cantidad de contactos a Ingresar en la Agenda: '))
-    if (!isNaN(cantContactos)) {
-        for (let i = 0; (i < cantContactos); i++) {
-            const nuevoNombre = prompt('Ingrese Nombre:')
-            const nuevoTelefono = prompt('Ingrese Telefono:')
-            const nuevoContacto = new Contacto(nuevoNombre, nuevoTelefono)
-            console.log(nuevoContacto)
-            arrayAgenda.push(nuevoContacto)
-            console.log(arrayAgenda)
-        }
-    } else {
-        return document.writeln(`<p>Operación Inválida</p>`)
-    }
+    const nuevoNombre = prompt('Ingrese Nombre:')
+    const nuevoTelefono = prompt('Ingrese Telefono:')
+    const nuevoContacto = new Contacto(nuevoNombre, nuevoTelefono)
+    console.log(nuevoContacto)
+    arrayAgenda.push(nuevoContacto)
+    console.log(arrayAgenda)
 }
 
 
@@ -71,28 +73,47 @@ do {
             case 1:
                 //Agregar
                 console.log('Agregar')
-                agregarContacto()
+                const cantContactos = parseInt(prompt('Ingrese cantidad de contactos a Ingresar en la Agenda: '))
+                if (!isNaN(cantContactos)) {
+                    for (let i = 0; (i < cantContactos); i++) {
+                        agregarContacto()
+                    }
+                } else {
+                    document.writeln(`<p>Operación Inválida</p>`)
+                }
+                console.log(arrayAgenda)
                 break;
+
             case 2:
                 //Existe?
                 console.log('Existe?')
+                existeContacto(arrayAgenda)
                 break;
+
             case 3:
                 //Listar
                 console.log('Listar')
+                document.writeln(`<h3>listar datos de la Agenda:</h3>`)
+                for (let i = 0; i < arrayAgenda.length; i++) {
+                    arrayAgenda[i].listarDatos();
+                }
                 break;
+
             case 4:
                 //Buscar
                 console.log('Buscar')
                 break;
+
             case 5:
                 //Eliminar
                 console.log('eliminar')
                 break;
+
             case 6:
                 //Agenda llena?
                 console.log('llena?')
                 break;
+
             case 7:
                 //huecos libres?
                 console.log('huecos?')
@@ -107,3 +128,5 @@ do {
 
 
 console.log('fin programa')
+
+
