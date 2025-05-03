@@ -78,27 +78,33 @@ class Persona {
     //metodos
 
     mostrarGeneracion(anioNac) {
-        switch (anioNac) {
-            case (anioNac >= 1994 && anioNac <= 2010):
-                break;
+        let rasgoCaracteristico = ''
+        let generacion = ''
 
-            case (anioNac >= 1981 && anioNac <= 1993):
-                break;
-
-            case (anioNac >= 1969 && anioNac <= 1980):
-                break;
-
-            case (anioNac >= 1949 && anioNac <= 1968):
-                break;
-
-            case (anioNac >= 1930 && anioNac <= 1948):
-                break;
-
-                Default:
-                document.writeln(`operación invalida`)
-                break;
+        if (anioNac >= 1994 && anioNac <= 2010) {
+            rasgoCaracteristico = 'Irreverencia';
+            generacion = 'Z'
+        } else if (anioNac >= 1981 && anioNac <= 1993) {
+            rasgoCaracteristico = 'Frustración';
+            generacion = 'Y'
+        } else if (anioNac >= 1969 && anioNac <= 1980) {
+            rasgoCaracteristico = 'Obsesión por el éxito'
+            generacion = 'X'
+        } else if (anioNac >= 1949 && anioNac <= 1968) {
+            rasgoCaracteristico = 'Ambición';
+            generacion = 'Baby Boom'
+        } else if (anioNac >= 1930 && anioNac <= 1948) {
+            rasgoCaracteristico = 'Austeridad';
+            generacion = 'Silent Generation (los niños de la posguerra'
+        } else {
+            document.writeln("Ingresaste una opción inválida")
         }
+
+        console.log('rasgo: ' + rasgoCaracteristico)
+        console.log('generacion: ' + generacion);
     }
+
+
 
     imprimeDatos() {
         document.writeln(`<h3>Datos del Persona:</h3>
@@ -111,18 +117,11 @@ class Persona {
 
 }
 
-
-const Persona1 = new Persona('P001', 'Zapatillas Nike Air', 150000);
-arrayPersonas.push(Persona1)
-const Persona2 = new Persona('P002', 'Remera Adidas', 45000);
-arrayPersonas.push(Persona2)
-const Persona3 = new Persona('P003', 'Campera Puma', 135000);
-arrayPersonas.push(Persona3)
-
-console.log(arrayPersonas)
-
-for (let i = 0; i < arrayPersonas.length; i++) {
-    arrayPersonas[i].imprimeDatos();
-}
+// nuevo objeto
+const persona = new Persona('Valentina Iramain', 53, '22414369', 'F', '55 kg', 1.60, 1972);
+console.log(persona)
+console.log('antes funcion añoo nac ' + persona.getAnioNac)
+persona.mostrarGeneracion(persona.getAnioNac)
+console.log('fin programa')
 
 
