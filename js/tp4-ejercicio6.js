@@ -4,7 +4,8 @@
 // ●	Autor
 // ●	Número de páginas
 
-// Crear sus respectivos métodos get y set correspondientes para cada propiedad. Crear el método mostrarLibro() para mostrar la información relativa al libro con el siguiente formato:
+// Crear sus respectivos métodos get y set correspondientes para cada propiedad.
+// Crear el método mostrarLibro() para mostrar la información relativa al libro con el siguiente formato:
 
 // “El libro xxx con ISBN xxx creado por el autor xxx tiene páginas xxx”
 
@@ -38,7 +39,7 @@ class Libro {
     get getNroDePaginas() {
         return this.#nroDePaginas
     }
-     //set = modificar valor. siempre tiene parametros
+    //set = modificar valor. siempre tiene parametros
     set setIsbn(nuevoIsbn) {
         this.#isbn = nuevoIsbn
     }
@@ -51,4 +52,36 @@ class Libro {
     set setNroDePaginas(nuevoNroDePaginas) {
         this.#nroDePaginas = nuevoNroDePaginas
     }
+
+    mostrarLibro() {
+        return document.writeln(`</p>El libro ${this.#titulo} con ISBN ${this.#isbn} creado por el autor ${this.#autor} tiene ${this.#nroDePaginas} páginas.</p>`)
+    }
+
+    libroMasLargo(pagLibro1, pagLibro2) {
+        let resultado = ''
+        if (pagLibro1 > pagLibro2) {
+            resultado = '<p>El primer libro tiene más páginas que el segundo</p>'
+        } else if (pagLibro2 > pagLibro1) {
+            resultado = '<p>El segundo libro tiene más páginas que el primero</p>'
+        } else {
+            resultado = '<p>Ambos libros tienen la misma cantidad de páginas</p>'
+        }
+        return document.writeln(resultado)
+    }
 }
+
+
+const libro1 = new Libro('978-84-376-0494-7', 'Cien Años de Soledad', 'Gabriel García Márquez', 471);
+const libro2 = new Libro('978-950-07-0006-1', 'Rayuela', 'Julio Cortázar', 736);
+
+// Mostrar libros
+libro1.mostrarLibro();
+libro2.mostrarLibro();
+
+// cual tiene más paginas
+const pagLibro1 = libro1.getNroDePaginas
+const pagLibro2 = libro2.getNroDePaginas
+
+console.log('pag libro1: ' + pagLibro1)
+console.log('pag libro2: ' + pagLibro2)
+libro1.libroMasLargo(pagLibro1, pagLibro2)
