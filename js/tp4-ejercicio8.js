@@ -36,11 +36,11 @@ class Persona {
     }
 
     saludar(){
-        document.writeln(`<p> Hola ${this.#nombre} !!</p>`)
+        document.writeln(`<p> Hola ${this.getNombre} !!</p>`)
     }
 
     despedirse(){
-        document.writeln(`<p> Adiós ${this.#nombre} !!</p>`)
+        document.writeln(`<p> Adiós ${this.getNombre} !!</p>`)
     }
 }
 

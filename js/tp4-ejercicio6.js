@@ -54,7 +54,7 @@ class Libro {
     }
 
     mostrarLibro() {
-        return document.writeln(`</p>El libro ${this.#titulo} con ISBN ${this.#isbn} creado por el autor ${this.#autor} tiene ${this.#nroDePaginas} páginas.</p>`)
+        return document.writeln(`</p>El libro ${this.getTitulo} con ISBN ${this.getIsbn} creado por el autor ${this.getAutor} tiene ${this.getNroDePaginas} páginas.</p>`)
     }
 
     libroMasLargo(pagLibro1, pagLibro2) {

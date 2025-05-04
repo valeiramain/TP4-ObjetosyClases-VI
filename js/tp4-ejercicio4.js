@@ -45,15 +45,15 @@ class Producto {
     imprimeDatos() {
         document.writeln(`<h3>Datos del Producto:</h3>
             <ul>
-            <li>Código Producto: ${this.#codigoProducto}</li>
-            <li>Nombre Producto: ${this.#nombreProducto}</li>
-            <li>Precio Producto: $${this.#precioProducto}</li>
+            <li>Código Producto: ${this.getCodigoProducto}</li>
+            <li>Nombre Producto: ${this.getNombreProducto}</li>
+            <li>Precio Producto: $${this.getPrecioProducto}</li>
             </ul>`)
     }
 
 }
 
-
+//crea 3 productos
 const producto1 = new Producto('P001','Zapatillas Nike Air',150000);
 arrayProductos.push(producto1)
 const producto2 = new Producto('P002','Remera Adidas',45000);
@@ -63,6 +63,7 @@ arrayProductos.push(producto3)
 
 console.log(arrayProductos)
 
+// muestra cada producto
 for (let i = 0; i < arrayProductos.length; i++) {
     arrayProductos[i].imprimeDatos();
 }

@@ -106,7 +106,7 @@ class Aeropuerto {
 
     // método buscarAvion el cual recibirá el nombre de un avión y devolverá información en caso de encontrarlo, si no lo encontró indicar con un mensaje
     buscarAvion(nombreAvion) {
-        const avionEncontrado = this.#listaAviones.find(avion => avion.getNombre === nombreAvion);
+        const avionEncontrado = this.getListaAviones.find(avion => avion.getNombre === nombreAvion);
         return avionEncontrado
     }
 

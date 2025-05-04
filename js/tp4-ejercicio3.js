@@ -33,18 +33,18 @@ class Rectangulos {
     //metodos
 
     perimetro() {
-        return (2 * (this.#alto + this.#ancho))
+        return (2 * (this.getAlto + this.getAncho))
     }
 
     area() {
-        return (this.#alto * this.#ancho)
+        return (this.getAlto * this.getAncho)
     }
 
     mostrarDatos(titulo) {
         document.writeln(`<h3>${titulo}</h3>
             <ul>
-            <li>Alto: ${this.#alto}</li>
-            <li>Ancho: ${this.#ancho}</li>
+            <li>Alto: ${this.getAlto}</li>
+            <li>Ancho: ${this.getAncho}</li>
             </ul>`)
     }
 

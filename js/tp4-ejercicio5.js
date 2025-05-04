@@ -115,13 +115,13 @@ class Persona {
     mostrarDatos(){
         document.writeln(`<h3>Datos de la Persona:</h3>
             <ul>
-            <li>Nombre: ${this.#nombre}</li>
-            <li>Edad: ${this.#edad}</li>
-            <li>DNI: ${this.#dni}</li>
-            <li>Sexo: ${this.#sexo}</li>
-            <li>Peso: ${this.#peso}</li>
-            <li>Altura: ${this.#altura}</li>
-            <li>Año de Nacimiento: ${this.#anioNac}</li>
+            <li>Nombre: ${this.getNombre}</li>
+            <li>Edad: ${this.getEdad}</li>
+            <li>DNI: ${this.getDni}</li>
+            <li>Sexo: ${this.getSexo}</li>
+            <li>Peso: ${this.getPeso}</li>
+            <li>Altura: ${this.getAltura}</li>
+            <li>Año de Nacimiento: ${this.getAnioNac}</li>
             </ul>`)
     }
 

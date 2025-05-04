@@ -13,11 +13,11 @@ const cuenta = {
 
     //metodos
 
-    ingresar: function (dinero) {
+    ingresar (dinero) {
         this.saldo = this.saldo + dinero;
         document.writeln(`<p>Se depositó $${dinero}. El saldo Actual es = $${this.saldo}</p>`)
     },
-    extraer: function (dinero) {
+    extraer (dinero) {
         if (this.saldo >= dinero) {
             this.saldo = this.saldo - dinero;
             document.writeln(`<p>Se Extrajo $${dinero}. El saldo Actual es = $${this.saldo}</p>`)
@@ -26,14 +26,13 @@ const cuenta = {
             alert('Saldo Insuficiente')
         }
     },
-    informar: function () {
+    informar() {
         document.writeln(`<h4>Informe de Estado de Cuenta de: $${this.titular}</h4>`)
         document.writeln(`<p>El saldo Actual es = $${this.saldo}</p>`)
     }
 }
-
 do {
-    const operacion = parseInt(prompt('INGRESE 1 => Depósito,  2 => Extracción ó  3 => Consultar Saldo: '))
+    const operacion = parseInt(prompt('INGRESE 1 => Depósito,  2 => Extracción,  3 => Consultar Saldo: '))
     if (operacion >= 1 && operacion <= 3) {
         let dinero = 0
 
@@ -66,5 +65,4 @@ do {
         alert('Ingrese una operación válida')
     }
 
-} while (confirm('Desea seguir realizando operaciones?'))
-
+} while (confirm('¿Desea realizar otra operación?'))
