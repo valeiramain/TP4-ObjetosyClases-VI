@@ -1,4 +1,4 @@
-//7- Nos piden realizar una agenda telefónica de contactos.
+// 7- Nos piden realizar una agenda telefónica de contactos.
 
 // Un contacto está definido por un nombre y un teléfono. Se considera que un contacto es igual a otro cuando sus nombres son iguales.
 
@@ -14,119 +14,104 @@
 // ●	agendaLlena(): indica si la agenda está llena.
 // ●	huecosLibres(): indica cuántos contactos más podemos ingresar.
 
-// Crea un menú con opciones que serán seleccionadas por el usuario usando un prompt, las salidas de las operaciones seleccionadas por el usuario
-//  se pueden mostrar en pantalla y  por consola.
-const arrayAgenda = []
+// Crea un menú con opciones que serán seleccionadas por el usuario usando un prompt, las salidas de las operaciones seleccionadas por el usuario se pueden mostrar en pantalla y  por consola.
+
+
+//variables
+// contacto => objeto con nombre y telefono
+// agenda => objeto con array de contactos, y cantidad de contactos
+// metodos
+// crear un menu de opciones
 
 class Contacto {
-    // Defino cada propiedad privada
     #nombre;
     #telefono;
-    constructor(nombrep, telefonop) {
-        this.#nombre = nombrep;
-        this.#telefono = telefonop;
+    constructor(nombre, telefono) {
+        this.#nombre = nombre;
+        this.#telefono = telefono;
     }
 
-    // propiedades computadas: se usan cuando tengo propiedades privadas
-    //get = leer un valor
     get getNombre() {
-        return this.#nombre
+        return this.nombre
     }
-    get getTelefono() {
-        return this.#telefono
-    }
-
-    //set = modificar valor. siempre tiene parametros
     set setNombre(nuevoNombre) {
         this.#nombre = nuevoNombre
+    }
+    get getTelefono() {
+        return this.telefono
     }
     set setTelefono(nuevoTelefono) {
         this.#telefono = nuevoTelefono
     }
 
-
-    listarDatos() {
-        document.writeln(`
-        <ul>
-            <li>Nombre: ${this.#nombre}  Telefono: ${this.#telefono}</li>
-        </ul>`)
+    mostrarContacto() {
+        document.writeln(`<p>Nombre:${this.getNombre}, Teléfono: ${this.getTelefono}`)
     }
-
-
 }
 
-function agregarContacto() {
-    const nuevoNombre = prompt('Ingrese Nombre:')
-    const nuevoTelefono = prompt('Ingrese Telefono:')
-    const nuevoContacto = new Contacto(nuevoNombre, nuevoTelefono)
-    console.log(nuevoContacto)
-    arrayAgenda.push(nuevoContacto)
-    console.log(arrayAgenda)
+class Agenda {
+    #contactos;
+    #tamanio;
+    constructor(tamanio = 10) {
+        this.#contactos = [];
+        this.#tamanio = tamanio;
+    }
+    get getContactos() {
+        return this.#contactos
+    }
+    get getTamanio() {
+        return this.#tamanio;
+    }
+    set setTamanio(numevoTamanio) {
+        this.#tamanio = numevoTamanio
+    }
+
+    //metodos
+
+    aniadirContacto(contacto) {
+        this.#contactos.push(contacto)
+        console.log('agregar contacto a la agenda')
+        console.log(this.getContactos)
+    }
 }
 
+// const contacto1 = new Contacto('valentina','+549381202525')
+// console.log(contacto1)
 
-do {
-    const operacion = parseInt(prompt('INGRESE 1=>Agregar 2=>Existe 3=>Listar 4=>Buscar 5=>Eliminar 6=>Agenda Llena 7=>Huecos Libres: '))
+const capacidadAgenda = parseInt(prompt('Ingresa el tamaño de la Agenda: '))
 
-    if (!isNaN(operacion) && (operacion >= 1 && operacion <= 7)) {
-        switch (operacion) {
-            case 1:
-                //Agregar
-                console.log('Agregar')
-                const cantContactos = parseInt(prompt('Ingrese cantidad de contactos a Ingresar en la Agenda: '))
-                if (!isNaN(cantContactos)) {
-                    for (let i = 0; (i < cantContactos); i++) {
-                        agregarContacto()
-                    }
-                } else {
-                    document.writeln(`<p>Operación Inválida</p>`)
-                }
-                console.log(arrayAgenda)
-                break;
+//crear agenda
+const agendaNueva = new Agenda(capacidadAgenda)
+console.log(agendaNueva)
 
-            case 2:
-                //Existe?
-                console.log('Existe?')
-                existeContacto(arrayAgenda)
-                break;
+do{
+// mostrar el menú de opciones del usuario
+const opcion = parseInt(prompt(`Selecciona una opción:
+    1- Añadir contacto,
+    2- Eliminar contacto,
+    3- Listar contacto`))
 
-            case 3:
-                //Listar
-                console.log('Listar')
-                document.writeln(`<h3>listar datos de la Agenda:</h3>`)
-                for (let i = 0; i < arrayAgenda.length; i++) {
-                    arrayAgenda[i].listarDatos();
-                }
-                break;
+switch (opcion) {
+    case 1:
+        //pedir al usuario nombre y telefono
+        const nombre = prompt('Ingrese nombre del usuario: ')
+        const telefono = prompt('Ingrese telefono del contacto:')
+        // verificarContacto() si existe un contacto por el nombre ingresado (usar buscar frutas)
 
-            case 4:
-                //Buscar
-                console.log('Buscar')
-                break;
-
-            case 5:
-                //Eliminar
-                console.log('eliminar')
-                break;
-
-            case 6:
-                //Agenda llena?
-                console.log('llena?')
-                break;
-
-            case 7:
-                //huecos libres?
-                console.log('huecos?')
-                break;
-            default:
-                document.writeln("Ingresaste una opción inválida")
-        }
-    } else {
-        document.writeln(`<p>Operación Inválida</p>`)
-    }
-} while (confirm('Desea realizar operaciones en la Agenda?'))
-
-
-console.log('fin programa')
-
-
+        // if no exite => crear contacto
+        // crear objeto
+        const nuevoContacto = new Contacto(nombre,telefono)
+        console.log(nuevoContacto)
+        // invocar aniadirContacto()
+        agendaNueva.aniadirContacto(nuevoContacto)
+        console.log(agendaNueva)
+        break;
+    case 2:
+        //pedir nombre a eliminar
+        // invocar eliminarContacto()
+        break;
+    default:
+        document.writeln(`Ingresó opcion invalida`)
+        break;    
+}
+} while(confirm(`Desea continuar realizando operaciones?`))
