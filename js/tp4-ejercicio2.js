@@ -13,11 +13,11 @@ const cuenta = {
 
     //metodos
 
-    ingresar (dinero) {
+    ingresar(dinero) {
         this.saldo = this.saldo + dinero;
         document.writeln(`<p>Se depositó $${dinero}. El saldo Actual es = $${this.saldo}</p>`)
     },
-    extraer (dinero) {
+    extraer(dinero) {
         if (this.saldo >= dinero) {
             this.saldo = this.saldo - dinero;
             document.writeln(`<p>Se Extrajo $${dinero}. El saldo Actual es = $${this.saldo}</p>`)
@@ -32,37 +32,40 @@ const cuenta = {
     }
 }
 do {
-    const operacion = parseInt(prompt('INGRESE 1 => Depósito,  2 => Extracción,  3 => Consultar Saldo: '))
-    if (operacion >= 1 && operacion <= 3) {
-        let dinero = 0
 
-        switch (operacion) {
-            case 1:
-                dinero = parseFloat(prompt('Ingrese importe a depositar: $'))
-                if (!isNaN(dinero)) {
-                    cuenta.ingresar(dinero);
-                } else {
-                    alert('Valor inválido')
-                }
-                break;
-            case 2:
+    const operacion = parseInt(prompt(`Selecciona una opción:
+        1- Depósito,
+        2- Extracción,
+        3- Consultar Saldo
+        `))
 
-                dinero = parseFloat(prompt('Ingrese importe a Extraer: $'))
-                if (!isNaN(dinero)) {
-                    cuenta.extraer(dinero);
-                } else {
-                    alert('Valor inválido')
-                }
-                break;
-            case 3:
-                cuenta.informar()
-                break;
-            default:
-                document.writeln('Operación Inválida')
-                break;
-        }
-    } else {
-        alert('Ingrese una operación válida')
+    let dinero = 0
+
+    switch (operacion) {
+        case 1:
+            dinero = parseFloat(prompt('Ingrese importe a depositar: $'))
+            if (!isNaN(dinero)) {
+                cuenta.ingresar(dinero);
+            } else {
+                alert('Valor inválido')
+            }
+            break;
+        case 2:
+
+            dinero = parseFloat(prompt('Ingrese importe a Extraer: $'))
+            if (!isNaN(dinero)) {
+                cuenta.extraer(dinero);
+            } else {
+                alert('Valor inválido')
+            }
+            break;
+        case 3:
+            cuenta.informar()
+            break;
+        default:
+            document.writeln('Operación Inválida')
+            break;
     }
+
 
 } while (confirm('¿Desea realizar otra operación?'))
