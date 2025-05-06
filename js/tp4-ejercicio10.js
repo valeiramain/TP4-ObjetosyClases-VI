@@ -10,6 +10,58 @@
 // Agregar los 3 aviones al aeropuerto, buscar un avión y usar el método abordar.
 
 
+
+
+
+class Aeropuerto {
+    #nombreAeropuerto;
+    #listaAviones;
+    constructor(nombreAeropuerto) {
+        this.#nombreAeropuerto = nombreAeropuerto;
+        this.#listaAviones = [];
+    }
+    // propiedades computadas: se usan cuando tengo propiedades privadas
+    //get = leer un valor
+    get getNombreAeropuerto() {
+        return this.#nombreAeropuerto
+    }
+    get getListaAviones() {
+        return this.#listaAviones
+    }
+    //set = modificar valor. siempre tiene parametros
+    set setNombreAeropuerto(nuevoNombreAeropuerto) {
+        this.#nombreAeropuerto = nuevoNombreAeropuerto
+    }
+    set setListaAviones(nuevaListaAviones) {
+        this.#listaAviones = nuevaListaAviones
+    }
+
+    // el método agregarAvion, el cual recibirá un objeto de tipo Avión
+    agregarAvion(avion) {
+        this.#listaAviones.push(avion)
+        return (document.writeln(`<p>Se agregó el Avión ${avion.getNombre} correctamente al Aeropuerto Internacional.</p>`))
+    }
+
+    // método buscarAvion el cual recibirá el nombre de un avión y devolverá información en caso de encontrarlo, si no lo encontró indicar con un mensaje
+    buscarAvion(nombreAvion) {
+        const avionEncontrado = this.getListaAviones.find(avion => avion.getNombre === nombreAvion);
+        return avionEncontrado
+    }
+
+    // mostrar datos del avion ingresado
+    mostrarAeropuerto() {
+        document.writeln(`
+            <h2>Datos del Aeropuerto:</h2>
+            <ul>
+                <li>Nombre: ${this.getNombreAeropuerto}</li>
+                <li>Lista de Aviones:
+                    <ul>${this.getListaAviones.map(avion => `<li>${avion.getNombre}</li>`).join('')}</ul>
+                </li>
+            </ul>
+        `);
+    }
+}
+
 class Avion {
     #nombre;
     #capacidad;
@@ -74,58 +126,7 @@ class Avion {
     }
 }
 
-
-class Aeropuerto {
-    #nombreAeropuerto;
-    #listaAviones;
-    constructor(nombreAeropuerto) {
-        this.#nombreAeropuerto = nombreAeropuerto;
-        this.#listaAviones = [];
-    }
-    // propiedades computadas: se usan cuando tengo propiedades privadas
-    //get = leer un valor
-    get getNombreAeropuerto() {
-        return this.#nombreAeropuerto
-    }
-    get getListaAviones() {
-        return this.#listaAviones
-    }
-    //set = modificar valor. siempre tiene parametros
-    set setNombreAeropuerto(nuevoNombreAeropuerto) {
-        this.#nombreAeropuerto = nuevoNombreAeropuerto
-    }
-    set setListaAviones(nuevaListaAviones) {
-        this.#listaAviones = nuevaListaAviones
-    }
-
-    // el método agregarAvion, el cual recibirá un objeto de tipo Avión
-    agregarAvion(avion) {
-        this.#listaAviones.push(avion)
-        return (document.writeln(`<p>Se agregó el Avión ${avion.getNombre} correctamente al Aeropuerto Internacional.</p>`))
-    }
-
-    // método buscarAvion el cual recibirá el nombre de un avión y devolverá información en caso de encontrarlo, si no lo encontró indicar con un mensaje
-    buscarAvion(nombreAvion) {
-        const avionEncontrado = this.getListaAviones.find(avion => avion.getNombre === nombreAvion);
-        return avionEncontrado
-    }
-
-    // mostrar datos del avion ingresado
-    mostrarAeropuerto() {
-        document.writeln(`
-            <h2>Datos del Aeropuerto:</h2>
-            <ul>
-                <li>Nombre: ${this.getNombreAeropuerto}</li>
-                <li>Lista de Aviones:
-                    <ul>${this.getListaAviones.map(avion => `<li>${avion.getNombre}</li>`).join('')}</ul>
-                </li>
-            </ul>
-        `);
-    }
-}
-
-
-
+//-------------------------------------------------------------------------------------------------
 // Crear un objeto de tipo aeropuerto llamado "Aeropuerto Internacional"
 const aeropuertoInternacional = new Aeropuerto('Ministro Pistarini')
 
@@ -136,13 +137,13 @@ const avion1 = new Avion('Boeing', 160, 'Santiago de Chile')
 const avion2 = new Avion('Airbus', 180, 'Lima')
 const avion3 = new Avion('Embraer', 120, 'Panamá')
 
-console.log('alta aviones')
+console.log('Se crean 3 objetos aviones:')
 console.log(avion1)
 console.log(avion2)
 console.log(avion3)
 
 // Agregar los 3 aviones al aeropuerto
-console.log('agregar aviones a un aeropuerto')
+console.log('agregar aviones a aeropuertoInternacional:')
 
 aeropuertoInternacional.agregarAvion(avion1)
 avion1.mostrarAvion()
@@ -157,18 +158,24 @@ aeropuertoInternacional.mostrarAeropuerto()
 
 
 // Buscar un avion en la clase aeropuerto
+console.log('busca avion Airbus')
 const avionEncontrado = aeropuertoInternacional.buscarAvion('Airbus')
 if (avionEncontrado) {
+    console.log(`✅ Avión encontrado.`);
     document.writeln(`✅ Avión encontrado.`);
 } else {
+    console.log(`⚠️ No se encontró el avión.`);
     document.writeln(`⚠️ No se encontró el avión.`);
 }
 
 // abordar avion
+console.log('Abordar 2 pasajeros al avion Boeing')
 avion1.abordar("Pasajero1");
-avion2.abordar("Pasajero2");
-avion3.abordar("Pasajero3");
+avion1.abordar("Pasajero2");
 console.log(avion1)
+console.log('Abordar 1 pasajero al avion Airbus')
+avion2.abordar("Pasajero3");
+console.log(avion2)
 
 
 
